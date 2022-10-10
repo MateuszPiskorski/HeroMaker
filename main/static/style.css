@@ -14,12 +14,11 @@ html, body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.75;
 
     z-index: 1;
 }
 
-.bg-btn {
+a.bg-btn {
     position: relative;
     z-index: 10;
     top: 40%;
@@ -32,18 +31,24 @@ html, body {
     max-height: 15%;
 
     background-color: #111;
+    opacity: 0.75;
     /*box-shadow: 12px 12px 2px 1px rgb(0, 31, 241, 0.4);*/
 
     font-size: 60px;
     color: white;
     text-align: center;
-
+    text-decoration: none;
     margin-bottom: 40px;
+    padding-top: 15px;
 
-    border: 2px solid white;
+    border: 3px solid white;
     border-radius: 5px;
 
     cursor: pointer;
     display: block;
 }
 
+.bg-btn:hover {
+    background-color: rgba(110, 110, 114, 0.9);
+    transition: 0.7s;
+}

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Hero Maker</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -15,8 +15,8 @@
 
 {% block content %}
     <div class="bg">
-        <button class="bg-btn" type="button">Log In</button>
-        <button class="bg-btn" type="button">Sign Up</button>
+        <a class="bg-btn" role="button" href="{% url 'login' %}">Log In</a>
+        <a class="bg-btn" role="button" href="{% url 'register' %}">Sign Up</a>
     </div>
 {% endblock %}
 </body>
