@@ -1,10 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Game(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(max_length=1024)
     rule_set = models.CharField(max_length=255, default="classic")
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Characteristics(models.Model):
@@ -24,6 +30,11 @@ class Class(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
 
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Talent(models.Model):
     name = models.CharField(max_length=255)
@@ -31,6 +42,11 @@ class Talent(models.Model):
     bonus_when_maxed = models.CharField(max_length=255)
     description = models.TextField()
     level = models.PositiveSmallIntegerField()
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Skill(models.Model):
@@ -41,6 +57,11 @@ class Skill(models.Model):
     is_advanced = models.BooleanField(default=False)
     is_grouped = models.BooleanField(default=False)
 
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Career(models.Model):
     name = models.CharField(max_length=255)
@@ -50,6 +71,10 @@ class Career(models.Model):
     _class = models.ForeignKey(Class, on_delete=models.CASCADE)
     talents = models.ManyToManyField(Talent)
     skills = models.ManyToManyField(Skill)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Species(models.Model):
@@ -59,9 +84,10 @@ class Species(models.Model):
     disallowed_careers = models.ManyToManyField(Career)
     skills = models.ManyToManyField(Skill)
     talents = models.ManyToManyField(Talent)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
-
-
+    def __str__(self):
+        return self.name
 
 
 # class Hero(models.Model):

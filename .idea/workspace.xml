@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6b57c82-083c-42ab-b65b-452c99d28852" name="Changes" comment="" />
+    <list default="true" id="c6b57c82-083c-42ab-b65b-452c99d28852" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/main/static/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/static/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/nav_bar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8471c88b-951e-477a-a476-83fcf7dd0aa8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8471c88b-951e-477a-a476-83fcf7dd0aa8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HeroMaker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/HeroMaker/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +19,14 @@
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,13 +42,24 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/mateusz/workspace/projektkoncowy/HeroMaker/HeroMaker/settings.py",
+    "last_opened_file_path": "/home/mateusz/workspace/projektkoncowy/HeroMaker/main/static",
+    "list.type.of.created.stylesheet": "CSS",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/main/static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/main/static" />
+      <recent name="$PROJECT_DIR$/main/templates" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -39,7 +68,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665130687643</updated>
-      <workItem from="1665130692182" duration="17126000" />
+      <workItem from="1665130692182" duration="17169000" />
+      <workItem from="1665390487758" duration="11184000" />
     </task>
     <servers />
   </component>
