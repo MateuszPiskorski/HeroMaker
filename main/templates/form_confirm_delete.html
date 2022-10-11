@@ -7,8 +7,8 @@
     <div class="mt-100 col-auto">
         <form action="" method="post">
             {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit">
+            <h2>Are you sure you want to delete <b>{{ object.name }}</b>?</h2>
+            <input type="submit" value="Confirm">
         </form>
     </div>
 {% endblock %}

@@ -1,16 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Game(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(max_length=1024)
+    short_description = models.CharField(max_length=64)
     rule_set = models.CharField(max_length=255, default="classic")
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
+
+    def get_update_url(self):
+        return reverse('game-update', args=(self.id, ))
+
+    def get_create_url(self):
+        return reverse('game-create', args=(self.id, ))
+
+    def get_delete_url(self):
+        return reverse('game-delete', args=(self.id,))
 
 
 class Characteristics(models.Model):

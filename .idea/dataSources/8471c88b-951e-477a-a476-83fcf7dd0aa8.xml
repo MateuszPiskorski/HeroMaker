@@ -2045,314 +2045,319 @@ talent_id</ColNames>
       <DataType>INTEGER|0s</DataType>
       <Position>5</Position>
     </column>
-    <foreign-key id="653" parent="497">
+    <column id="653" parent="497" name="short_description">
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="654" parent="497">
       <ColNames>author_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>auth_user</RefTableName>
     </foreign-key>
-    <index id="654" parent="497" name="main_game_author_id_0b260b9e">
+    <index id="655" parent="497" name="main_game_author_id_0b260b9e">
       <ColNames>author_id</ColNames>
     </index>
-    <key id="655" parent="497">
+    <key id="656" parent="497">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="656" parent="498" name="id">
+    <column id="657" parent="498" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="657" parent="498" name="name">
+    <column id="658" parent="498" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="658" parent="498" name="characteristic">
+    <column id="659" parent="498" name="characteristic">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="659" parent="498" name="description">
+    <column id="660" parent="498" name="description">
       <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="660" parent="498" name="is_advanced">
+    <column id="661" parent="498" name="is_advanced">
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="661" parent="498" name="is_grouped">
+    <column id="662" parent="498" name="is_grouped">
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="662" parent="498" name="author_id">
+    <column id="663" parent="498" name="author_id">
       <DataType>INTEGER|0s</DataType>
       <Position>7</Position>
     </column>
-    <foreign-key id="663" parent="498">
+    <foreign-key id="664" parent="498">
       <ColNames>author_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>auth_user</RefTableName>
     </foreign-key>
-    <index id="664" parent="498" name="main_skill_author_id_2af2e87a">
+    <index id="665" parent="498" name="main_skill_author_id_2af2e87a">
       <ColNames>author_id</ColNames>
     </index>
-    <key id="665" parent="498">
+    <key id="666" parent="498">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="666" parent="499" name="id">
+    <column id="667" parent="499" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="667" parent="499" name="name">
+    <column id="668" parent="499" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="668" parent="499" name="description">
+    <column id="669" parent="499" name="description">
       <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="669" parent="499" name="author_id">
+    <column id="670" parent="499" name="author_id">
       <DataType>INTEGER|0s</DataType>
       <Position>4</Position>
     </column>
-    <foreign-key id="670" parent="499">
+    <foreign-key id="671" parent="499">
       <ColNames>author_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>auth_user</RefTableName>
     </foreign-key>
-    <index id="671" parent="499" name="main_species_author_id_c34574a2">
+    <index id="672" parent="499" name="main_species_author_id_c34574a2">
       <ColNames>author_id</ColNames>
     </index>
-    <key id="672" parent="499">
+    <key id="673" parent="499">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="673" parent="500" name="id">
+    <column id="674" parent="500" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="674" parent="500" name="species_id">
+    <column id="675" parent="500" name="species_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="675" parent="500" name="career_id">
+    <column id="676" parent="500" name="career_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <foreign-key id="676" parent="500">
+    <foreign-key id="677" parent="500">
       <ColNames>species_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>main_species</RefTableName>
     </foreign-key>
-    <foreign-key id="677" parent="500">
+    <foreign-key id="678" parent="500">
       <ColNames>career_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>main_career</RefTableName>
     </foreign-key>
-    <index id="678" parent="500" name="main_species_disallowed_careers_species_id_career_id_960e0523_uniq">
+    <index id="679" parent="500" name="main_species_disallowed_careers_species_id_career_id_960e0523_uniq">
       <ColNames>species_id
 career_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="679" parent="500" name="main_species_disallowed_careers_species_id_9631a931">
+    <index id="680" parent="500" name="main_species_disallowed_careers_species_id_9631a931">
       <ColNames>species_id</ColNames>
     </index>
-    <index id="680" parent="500" name="main_species_disallowed_careers_career_id_f2c31fb2">
+    <index id="681" parent="500" name="main_species_disallowed_careers_career_id_f2c31fb2">
       <ColNames>career_id</ColNames>
     </index>
-    <key id="681" parent="500">
+    <key id="682" parent="500">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="682" parent="501" name="id">
+    <column id="683" parent="501" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="683" parent="501" name="species_id">
+    <column id="684" parent="501" name="species_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="684" parent="501" name="skill_id">
+    <column id="685" parent="501" name="skill_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <foreign-key id="685" parent="501">
+    <foreign-key id="686" parent="501">
       <ColNames>species_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>main_species</RefTableName>
     </foreign-key>
-    <foreign-key id="686" parent="501">
+    <foreign-key id="687" parent="501">
       <ColNames>skill_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>main_skill</RefTableName>
     </foreign-key>
-    <index id="687" parent="501" name="main_species_skills_species_id_skill_id_31bbda0c_uniq">
+    <index id="688" parent="501" name="main_species_skills_species_id_skill_id_31bbda0c_uniq">
       <ColNames>species_id
 skill_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="688" parent="501" name="main_species_skills_species_id_7bc93de5">
+    <index id="689" parent="501" name="main_species_skills_species_id_7bc93de5">
       <ColNames>species_id</ColNames>
     </index>
-    <index id="689" parent="501" name="main_species_skills_skill_id_63be5b05">
+    <index id="690" parent="501" name="main_species_skills_skill_id_63be5b05">
       <ColNames>skill_id</ColNames>
     </index>
-    <key id="690" parent="501">
+    <key id="691" parent="501">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="691" parent="502" name="id">
+    <column id="692" parent="502" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="692" parent="502" name="species_id">
+    <column id="693" parent="502" name="species_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="693" parent="502" name="talent_id">
+    <column id="694" parent="502" name="talent_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <foreign-key id="694" parent="502">
+    <foreign-key id="695" parent="502">
       <ColNames>species_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>main_species</RefTableName>
     </foreign-key>
-    <foreign-key id="695" parent="502">
+    <foreign-key id="696" parent="502">
       <ColNames>talent_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>main_talent</RefTableName>
     </foreign-key>
-    <index id="696" parent="502" name="main_species_talents_species_id_talent_id_6eb7fefb_uniq">
+    <index id="697" parent="502" name="main_species_talents_species_id_talent_id_6eb7fefb_uniq">
       <ColNames>species_id
 talent_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="697" parent="502" name="main_species_talents_species_id_cc2f301b">
+    <index id="698" parent="502" name="main_species_talents_species_id_cc2f301b">
       <ColNames>species_id</ColNames>
     </index>
-    <index id="698" parent="502" name="main_species_talents_talent_id_ff555e4c">
+    <index id="699" parent="502" name="main_species_talents_talent_id_ff555e4c">
       <ColNames>talent_id</ColNames>
     </index>
-    <key id="699" parent="502">
+    <key id="700" parent="502">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <check id="700" parent="503">
+    <check id="701" parent="503">
       <Predicate>&quot;level&quot; &gt;= 0</Predicate>
     </check>
-    <column id="701" parent="503" name="id">
+    <column id="702" parent="503" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="702" parent="503" name="name">
+    <column id="703" parent="503" name="name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="703" parent="503" name="tests">
+    <column id="704" parent="503" name="tests">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="704" parent="503" name="bonus_when_maxed">
+    <column id="705" parent="503" name="bonus_when_maxed">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="705" parent="503" name="description">
+    <column id="706" parent="503" name="description">
       <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="706" parent="503" name="level">
+    <column id="707" parent="503" name="level">
       <DataType>smallint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="707" parent="503" name="author_id">
+    <column id="708" parent="503" name="author_id">
       <DataType>INTEGER|0s</DataType>
       <Position>7</Position>
     </column>
-    <foreign-key id="708" parent="503">
+    <foreign-key id="709" parent="503">
       <ColNames>author_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
       <RefTableName>auth_user</RefTableName>
     </foreign-key>
-    <index id="709" parent="503" name="main_talent_author_id_7d5655b6">
+    <index id="710" parent="503" name="main_talent_author_id_7d5655b6">
       <ColNames>author_id</ColNames>
     </index>
-    <key id="710" parent="503">
+    <key id="711" parent="503">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="711" parent="504" name="type">
+    <column id="712" parent="504" name="type">
       <DataType>TEXT|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="712" parent="504" name="name">
+    <column id="713" parent="504" name="name">
       <DataType>TEXT|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="713" parent="504" name="tbl_name">
+    <column id="714" parent="504" name="tbl_name">
       <DataType>TEXT|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="714" parent="504" name="rootpage">
+    <column id="715" parent="504" name="rootpage">
       <DataType>INT|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="715" parent="504" name="sql">
+    <column id="716" parent="504" name="sql">
       <DataType>TEXT|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="716" parent="505" name="name">
+    <column id="717" parent="505" name="name">
       <Position>1</Position>
     </column>
-    <column id="717" parent="505" name="seq">
+    <column id="718" parent="505" name="seq">
       <Position>2</Position>
     </column>
   </database-model>

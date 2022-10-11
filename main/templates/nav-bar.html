@@ -1,0 +1,54 @@
+{% url 'index' as index %}
+{% url 'games-list' as games %}
+{% url 'register' as register %}
+{% url 'login' as login %}
+{% url 'logout' as logout %}
+
+<div class="container-fluid px-0">
+    <nav class="navbar navbar-expand-md navbar-dark bg-black px-0 fixed-top">
+        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item {% if request.path == index %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'index' %}"><span class="fa fa-dragon"></span> Hero Maker</a>
+                </li>
+                <li class="nav-item nav-item {% if request.path == games %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'games-list' %}"><span class="fa fa-dice"></span> Games</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item nav-item {% if request.path == games %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'games-list' %}"><span class="fa fa-table-columns"></span> Dashboard</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item nav-item {% if request.path == register %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'register' %}"><span class="fa-solid fa-user"></span> Hello <b>{{ user.username }}</b></a>
+                    </li>
+                    <li class="nav-item nav-item {% if request.path == logout %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'logout' %}"><span class="fa-solid fa-right-from-bracket"></span> Log out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item nav-item {% if request.path == register %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'register' %}"><span class="fa-solid fa-user-plus"></span> Sign Up</a>
+                    </li>
+                    <li class="nav-item nav-item {% if request.path == login %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'login' %}"><span class="fa-solid fa-right-to-bracket"></span> Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+{#        <a class="navbar-brand mr-5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="logo" src="https://i.imgur.com/K7Nwq4V.jpg"> &nbsp;&nbsp;&nbsp;Acme Inc<span class="dropdown-toggle"></span></a>#}
+{#        <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+{#            <a class="dropdown-item" href="#">Action1</a>#}
+{#            <a class="dropdown-item" href="#">Action2</a>#}
+{#            <a class="dropdown-item" href="#">Action3</a>#}
+{#            <a class="dropdown-item" href="#">Action4</a>#}
+{#        </div>#}

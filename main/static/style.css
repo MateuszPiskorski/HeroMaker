@@ -18,7 +18,7 @@ html, body {
     z-index: 1;
 }
 
-a.bg-btn {
+.bg-btn, .bg-btn:visited, .bg-btn:active {
     position: relative;
     z-index: 10;
     top: 40%;
@@ -32,7 +32,6 @@ a.bg-btn {
 
     background-color: #111;
     opacity: 0.75;
-    /*box-shadow: 12px 12px 2px 1px rgb(0, 31, 241, 0.4);*/
 
     font-size: 60px;
     color: white;
@@ -51,4 +50,117 @@ a.bg-btn {
 .bg-btn:hover {
     background-color: rgba(110, 110, 114, 0.9);
     transition: 0.7s;
+    text-decoration: none;
+}
+
+.bg-black {
+    background-color: #000;
+}
+
+#logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.navbar-brand {
+    padding: 6px 20px;
+    font-size: 16px;
+}
+
+.nav-item {
+    padding: 0px 8px;
+    margin: 0px 3px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.nav-item.active {
+    background-color: #9E9E9E;
+}
+
+.nav-item:hover {
+    background-color: #9E9E9E;
+}
+
+.nav-link {
+    padding: 5px;
+}
+
+.navbar-collapse.collapse.in {
+    display: block !important;
+}
+
+.fa {
+    padding-right: 10px;
+}
+
+.dropdown-toggle {
+    color: gray;
+    padding: 3px 10px;
+    position: absolute;
+}
+
+.dropdown-toggle:hover {
+    color: #fff;
+}
+
+.dropdown-menu {
+    margin-left: 15px;
+    width: 120px;
+    margin-top: 0px;
+}
+
+.dropdown-item:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+@media (max-width: 576px) {
+    .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.table-elipse {
+  cursor: pointer;
+}
+
+#data {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.cell-1 {
+  border-collapse: separate;
+  border-spacing: 0 4em;
+  background: #ffffff;
+  border-bottom: 5px solid transparent;
+  /*background-color: gold;*/
+  background-clip: padding-box;
+  cursor: pointer;
+}
+
+.row-child {
+  background-color: #000;
+  color: #fff;
+}
+
+.mt-100 {
+    margin-top: 100px !important;
+}
+
+.fa-trash {
+    color: red;
+}
+
+.fa-square-plus {
+    color: green;
 }
