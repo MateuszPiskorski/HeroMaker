@@ -39,6 +39,7 @@ class Characteristics(models.Model):
 
 class Class(models.Model):
     name = models.CharField(max_length=255)
+    short_description = models.CharField(max_length=64)
     description = models.TextField()
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -46,11 +47,21 @@ class Class(models.Model):
     def __str__(self):
         return self.name
 
+    def get_update_url(self):
+        return reverse('class-update', args=(self.id, ))
+
+    def get_create_url(self):
+        return reverse('class-create', args=(self.id, ))
+
+    def get_delete_url(self):
+        return reverse('class-delete', args=(self.id,))
+
 
 class Talent(models.Model):
     name = models.CharField(max_length=255)
     tests = models.CharField(max_length=255)
     bonus_when_maxed = models.CharField(max_length=255)
+    short_description = models.CharField(max_length=64)
     description = models.TextField()
     level = models.PositiveSmallIntegerField()
 
@@ -59,10 +70,20 @@ class Talent(models.Model):
     def __str__(self):
         return self.name
 
+    def get_update_url(self):
+        return reverse('talent-update', args=(self.id, ))
+
+    def get_create_url(self):
+        return reverse('talent-create', args=(self.id, ))
+
+    def get_delete_url(self):
+        return reverse('talent-delete', args=(self.id,))
+
 
 class Skill(models.Model):
     name = models.CharField(max_length=255)
     characteristic = models.CharField(max_length=255)
+    short_description = models.CharField(max_length=64)
     description = models.TextField()
 
     is_advanced = models.BooleanField(default=False)
@@ -73,9 +94,19 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+    def get_update_url(self):
+        return reverse('skill-update', args=(self.id, ))
+
+    def get_create_url(self):
+        return reverse('skill-create', args=(self.id, ))
+
+    def get_delete_url(self):
+        return reverse('skill-delete', args=(self.id,))
+
 
 class Career(models.Model):
     name = models.CharField(max_length=255)
+    short_description = models.CharField(max_length=64)
     description = models.TextField()
     first_level_name = models.CharField(max_length=255)
 
@@ -87,9 +118,19 @@ class Career(models.Model):
     def __str__(self):
         return self.name
 
+    def get_update_url(self):
+        return reverse('career-update', args=(self.id, ))
+
+    def get_create_url(self):
+        return reverse('career-create', args=(self.id, ))
+
+    def get_delete_url(self):
+        return reverse('career-delete', args=(self.id,))
+
 
 class Species(models.Model):
     name = models.CharField(max_length=255)
+    short_description = models.CharField(max_length=64)
     description = models.TextField()
 
     disallowed_careers = models.ManyToManyField(Career)
@@ -100,6 +141,14 @@ class Species(models.Model):
     def __str__(self):
         return self.name
 
+    def get_update_url(self):
+        return reverse('species-update', args=(self.id, ))
+
+    def get_create_url(self):
+        return reverse('species-create', args=(self.id, ))
+
+    def get_delete_url(self):
+        return reverse('species-delete', args=(self.id,))
 
 # class Hero(models.Model):
 #     name = models.CharField(max_length=255)

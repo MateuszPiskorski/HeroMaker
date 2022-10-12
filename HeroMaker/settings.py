@@ -132,6 +132,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'index'  # URL redirecting after a successful authentication
+LOGIN_REDIRECT_URL = 'dashboard'  # URL redirecting after a successful authentication
 LOGOUT_REDIRECT_URL = 'index'  # URL redirecting after a successful logout
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -18,8 +18,9 @@
                     <a class="nav-link" href="{% url 'games-list' %}"><span class="fa fa-dice"></span> Games</a>
                 </li>
                 {% if user.is_authenticated %}
-                    <li class="nav-item nav-item {% if request.path == games %} active {% endif %}">
-                        <a class="nav-link" href="{% url 'games-list' %}"><span class="fa fa-table-columns"></span> Dashboard</a>
+                    {% url 'dashboard' pk=user.id as dashboard %}
+                    <li class="nav-item nav-item {% if request.path == dashboard %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'dashboard' pk=user.id %}"><span class="fa fa-table-columns"></span> Dashboard</a>
                     </li>
                 {% endif %}
             </ul>

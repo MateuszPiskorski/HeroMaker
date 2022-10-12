@@ -164,3 +164,49 @@ html, body {
 .fa-square-plus {
     color: green;
 }
+
+.bg-gray {
+    background-color: #282828;
+}
+
+.mt-50 {
+    margin-top: 50px !important;
+}
+
+.d-link {
+    color: white !important
+}
+
+.dashboard-navbar-text {
+    color: white;
+    margin-top: 10px !important;
+}
+
+.dashboard-navbar {
+    text-align: center;
+}
+
+.d-nav-item {
+    padding: 8px 0px;
+    margin: 3px 0px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.d-nav-item.active {
+    background-color: #9E9E9E;
+}
+
+.d-nav-item:hover {
+    background-color: #9E9E9E;
+}
+
+.dashboard-content {
+    margin-top: -50px;
+}
+
+.d-line {
+    color: white;
+    background-color: white;
+    height: 2px;
+}

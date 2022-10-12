@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% url 'species-list' as species %}
+    {% url 'class-list' as classes %}
+    {% url 'skill-list' as skills %}
+    {% url 'talent-list' as talents %}
+    <div class="container-fluid h-100 mt-50">
+        <div class="row h-100">
+            <div class="col-2 bg-dark dashboard-navbar">
+                <h4 class="dashboard-navbar-text"><span class="fa-solid fa-user dashboard-navbar-text"></span><br><b>{{ user.username }}</b></h4>
+                <hr class="d-line">
+                <ul class="navbar-nav mr-auto">
+                    {% url 'dashboard' pk=user.id as dashboard %}
+                    <li class="d-nav-item {% if request.path == dashboard %} active {% endif %}">
+                        <a class="d-link nav-link" href="{% url 'dashboard' pk=user.id %}"><span class="fa fa-dragon"></span> Heroes</a>
+                    </li>
+                    <li class="d-nav-item {% if request.path == species %} active {% endif %}">
+                        <a class="d-link nav-link" href="{% url 'species-list' %}"><span class="fa fa-dice-d20"></span> Species</a>
+                    </li>
+                    <li class="d-nav-item {% if request.path == classes %} active {% endif %}">
+                        <a class="d-link nav-link" href="{% url 'class-list' %}"><span class="fa fa-hat-wizard"></span> Classes</a>
+                    </li>
+                    <li class="d-nav-item {% if request.path == skills %} active {% endif %}">
+                        <a class="d-link nav-link" href="{% url 'skill-list' %}"><span class="fa fa-scroll"></span> Skills</a>
+                    </li>
+                    <li class="d-nav-item {% if request.path == talents %} active {% endif %}">
+                        <a class="d-link nav-link" href="{% url 'talent-list' %}"><span class="fa fa-graduation-cap"></span> Talents</a>
+                    </li>
+                    <li class="d-nav-item">
+                        <a class="d-link nav-link" href="#"><span class="fa fa-shield"></span> Items</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-10 dashboard-content">
+                {% include 'dashboard-list-view.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="mt-50">
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr class="d-flex">
                 <th scope="col" class="col-1">#</th>
                 <th scope="col" class="col-3">Name</th>
-                <th scope="col" class="col-6" colspan="5">Short description</th>
+                <th scope="col" class="col-5" colspan="5">Short description</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for item in object_list %}
                 <tr class="d-flex">
                     <th scope="row" class="col-1">{{ forloop.counter }}</th>
                     <td class="col-3">{{ item.name }}</td>
-                    <td class="col-6">
+                    <td class="col-5">
                         {% if item.description|length > 64 %}
                             {{ item.short_description }}
                         {% else %}
@@ -24,19 +24,17 @@
                     <td class="{% if user.is_superuser %} col-1 {% else %} col-2 {% endif %} text-right">
                         <a title="create" href="{{ item.get_create_url }}"><span class="fa fa-square-plus"></span></a>
                     </td>
-                    {% if user.is_superuser %}
-                        <td class="col-05">
-                            <a title="edit" href="{{ item.get_update_url }}"><span class="fa fa-pen-to-square"></span></a>
-                        </td>
-                        <td class="col-05">
-                            <a title="delete" href="{{ item.get_delete_url }}"><span class="fa fa-trash"></span></a>
-                        </td>
-                    {% endif %}
+                    <td class="col-05">
+                        <a title="edit" href="{{ item.get_update_url }}"><span class="fa fa-pen-to-square"></span></a>
+                    </td>
+                    <td class="col-05">
+                        <a title="delete" href="{{ item.get_delete_url }}"><span class="fa fa-trash"></span></a>
+                    </td>
                 </tr>
             {% empty %}
                 <tr><td colspan="6">I see nothing...</td></tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
 {% endblock %}
