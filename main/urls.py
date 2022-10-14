@@ -15,27 +15,40 @@ Including another URLconf
 """
 from django.urls import path
 
-from main.views import (
-    GameUpdateView,
-    GameCreateView,
-    GameDeleteView,
-    DashboardView,
-    SpeciesListView,
-    ClassListView,
-    SkillListView,
-    TalentListView,
-)
+from main import views
+
 
 urlpatterns = [
-    # authentication not required views
-    path('game/edit/<int:pk>', GameUpdateView.as_view(), name='game-update'),
-    path('game/create/<int:pk>', GameCreateView.as_view(), name='game-create'),
-    path('game/delete/<int:pk>', GameDeleteView.as_view(), name='game-delete'),
-
     # authentication required views
-    path('user/<int:pk>/dashboard', DashboardView.as_view(), name='dashboard'),
-    path('species-list/', SpeciesListView.as_view(), name='species-list'),
-    path('class-list/', ClassListView.as_view(), name='class-list'),
-    path('skill-list/', SkillListView.as_view(), name='skill-list'),
-    path('talent-list/', TalentListView.as_view(), name='talent-list'),
+    path('game/edit/<int:pk>', views.GameUpdateView.as_view(), name='game-update'),
+    path('game/create/<int:pk>', views.GameCreateView.as_view(), name='game-create'),
+    path('game/delete/<int:pk>', views.GameDeleteView.as_view(), name='game-delete'),
+
+    path('user/<int:pk>/dashboard', views.DashboardView.as_view(), name='dashboard'),
+
+    path('species-list/', views.SpeciesListView.as_view(), name='species-list'),
+    path('class-list/', views.ClassListView.as_view(), name='class-list'),
+    path('career-list/', views.CareerListView.as_view(), name='career-list'),
+    path('skill-list/', views.SkillListView.as_view(), name='skill-list'),
+    path('talent-list/', views.TalentListView.as_view(), name='talent-list'),
+
+    path('species/edit/<int:pk>', views.SpeciesUpdateView.as_view(), name='species-update'),
+    path('species/create/<int:pk>', views.SpeciesCreateView.as_view(), name='species-create'),
+    path('species/delete/<int:pk>', views.SpeciesDeleteView.as_view(), name='species-delete'),
+
+    path('class/edit/<int:pk>', views.ClassCreateView.as_view(), name='class-update'),
+    path('class/create/<int:pk>', views.ClassUpdateView.as_view(), name='class-create'),
+    path('class/delete/<int:pk>', views.ClassDeleteView.as_view(), name='class-delete'),
+
+    path('career/edit/<int:pk>', views.CareerCreateView.as_view(), name='career-update'),
+    path('career/create/<int:pk>', views.CareerUpdateView.as_view(), name='career-create'),
+    path('career/delete/<int:pk>', views.CareerDeleteView.as_view(), name='career-delete'),
+
+    path('skill/edit/<int:pk>', views.SkillCreateView.as_view(), name='skill-update'),
+    path('skill/create/<int:pk>', views.SkillUpdateView.as_view(), name='skill-create'),
+    path('skill/delete/<int:pk>', views.SkillDeleteView.as_view(), name='skill-delete'),
+
+    path('talent/edit/<int:pk>', views.TalentCreateView.as_view(), name='talent-update'),
+    path('talent/create/<int:pk>', views.TalentUpdateView.as_view(), name='talent-create'),
+    path('talent/delete/<int:pk>', views.TalentDeleteView.as_view(), name='talent-delete'),
 ]

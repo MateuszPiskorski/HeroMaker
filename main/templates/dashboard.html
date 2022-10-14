@@ -3,6 +3,7 @@
 {% block content %}
     {% url 'species-list' as species %}
     {% url 'class-list' as classes %}
+    {% url 'career-list' as careers %}
     {% url 'skill-list' as skills %}
     {% url 'talent-list' as talents %}
     <div class="container-fluid h-100 mt-50">
@@ -20,6 +21,9 @@
                     </li>
                     <li class="d-nav-item {% if request.path == classes %} active {% endif %}">
                         <a class="d-link nav-link" href="{% url 'class-list' %}"><span class="fa fa-hat-wizard"></span> Classes</a>
+                    </li>
+                    <li class="d-nav-item {% if request.path == careers %} active {% endif %}">
+                        <a class="d-link nav-link" href="{% url 'career-list' %}"><span class="fa fa-compass-drafting"></span> Carrers</a>
                     </li>
                     <li class="d-nav-item {% if request.path == skills %} active {% endif %}">
                         <a class="d-link nav-link" href="{% url 'skill-list' %}"><span class="fa fa-scroll"></span> Skills</a>

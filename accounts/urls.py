@@ -19,6 +19,7 @@ from accounts.views import RegisterUserView, LoginUserView, LogoutUserView
 
 
 urlpatterns = [
+    # authentication not required views
     path('register/', RegisterUserView.as_view(), name="register"),
     path('login/', LoginUserView.as_view(), name="login"),
     path('logout/', LogoutUserView.as_view(), name="logout"),

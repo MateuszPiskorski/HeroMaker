@@ -6,35 +6,65 @@
             <tr class="d-flex">
                 <th scope="col" class="col-1">#</th>
                 <th scope="col" class="col-3">Name</th>
-                <th scope="col" class="col-5" colspan="5">Short description</th>
+                <th scope="col" class="col-6" colspan="5">Short description</th>
             </tr>
             </thead>
             <tbody>
             {% for item in object_list %}
                 <tr class="d-flex">
-                    <th scope="row" class="col-1">{{ forloop.counter }}</th>
+                    <th scope="row" class="col-1">{{ page_obj.start_index|add:forloop.counter0 }}</th>
                     <td class="col-3">{{ item.name }}</td>
-                    <td class="col-5">
+                    <td class="col-6">
                         {% if item.description|length > 64 %}
                             {{ item.short_description }}
                         {% else %}
                             {{ item.description }}
                         {% endif %}
                     </td>
-                    <td class="{% if user.is_superuser %} col-1 {% else %} col-2 {% endif %} text-right">
+                    <td class="col-1 text-right">
                         <a title="create" href="{{ item.get_create_url }}"><span class="fa fa-square-plus"></span></a>
                     </td>
-                    <td class="col-05">
-                        <a title="edit" href="{{ item.get_update_url }}"><span class="fa fa-pen-to-square"></span></a>
-                    </td>
-                    <td class="col-05">
-                        <a title="delete" href="{{ item.get_delete_url }}"><span class="fa fa-trash"></span></a>
-                    </td>
+                    {% if item.author.id == user.id %}
+                        <td class="col-05">
+                            <a title="edit" href="{{ item.get_update_url }}"><span class="fa fa-pen-to-square"></span></a>
+                        </td>
+                        <td class="col-05">
+                            <a title="delete" href="{{ item.get_delete_url }}"><span class="fa fa-trash"></span></a>
+                        </td>
+                    {% else %}
+                        <td class="col-05"></td>
+                        <td class="col-05"></td>
+                        <td class="col-05"></td>
+                        <td class="col-05"></td>
+                    {% endif %}
                 </tr>
             {% empty %}
                 <tr><td colspan="6">I see nothing...</td></tr>
             {% endfor %}
             </tbody>
         </table>
+        {% if is_paginated %}
+            <nav class="pagination-outer" aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link text-color-darker rounded-0" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link text-color-darker rounded-0">&laquo;</span></li>
+                    {% endif %}
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="page-item active"><span class="page-link text-color-darker">{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link text-color-darker" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link text-color-darker rounded-0" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="text-color-darker page-link rounded-0">&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
     </div>
 {% endblock %}
