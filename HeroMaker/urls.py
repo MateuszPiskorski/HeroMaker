@@ -26,5 +26,5 @@ urlpatterns = [
     # authentication not required views
     path('', IndexView.as_view(), name='index'),
     path('games-list/', GamesListView.as_view(), name='games-list'),
-    path('user/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

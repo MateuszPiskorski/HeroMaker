@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
@@ -43,37 +43,62 @@ class GameCreateView(LoginRequiredMixin, CreateView):
         return initial_data
 
 
-class GameUpdateView(LoginRequiredMixin, UpdateView):
+class GameUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Game
     form_class = GameModelForm
     template_name = 'form.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('games-list')
 
+    def test_func(self):
+        user = self.request.user
+        if user.is_superuser:
+            return True
+        else:
+            print("You need to be a superuser to preform this operation")
+            return False
 
-class GameDeleteView(LoginRequiredMixin, DeleteView):
+
+class GameDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Game
     template_name = 'form_confirm_delete.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('games-list')
 
+    def test_func(self):
+        user = self.request.user
+        if user.is_superuser:
+            return True
+        else:
+            print("You need to be a superuser to preform this operation")
+            return False
 
-class DashboardView(View):
+
+class DashboardView(LoginRequiredMixin, View):
+    login_url = 'login'
+
     def get(self, request, pk):
         return render(request, 'dashboard.html')
 
 
-class SpeciesListView(ListView):
+class SpeciesListView(LoginRequiredMixin, ListView):
     model = Species
     template_name = 'dashboard.html'
+
+    login_url = 'login'
 
     def get_queryset(self):
         return Species.objects.filter(Q(author__isnull=True) | Q(author=self.request.user)).order_by('name')
 
 
-class SpeciesCreateView(CreateView):
+class SpeciesCreateView(LoginRequiredMixin, CreateView):
     model = Species
     form_class = SpeciesModelForm
     template_name = 'form.html'
 
+    login_url = 'login'
     success_url = reverse_lazy('species-list')
 
     def form_valid(self, form):
@@ -83,33 +108,40 @@ class SpeciesCreateView(CreateView):
         return redirect(self.success_url)
 
 
-class SpeciesUpdateView(UpdateView):
+class SpeciesUpdateView(LoginRequiredMixin, UpdateView):
     model = Species
     form_class = SpeciesModelForm
     template_name = 'form.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('species-list')
 
 
-class SpeciesDeleteView(DeleteView):
+class SpeciesDeleteView(LoginRequiredMixin, DeleteView):
     model = Species
     template_name = 'form_confirm_delete.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('species-list')
 
 
-class ClassListView(ListView):
+class ClassListView(LoginRequiredMixin, ListView):
     model = Class
     template_name = 'dashboard.html'
     paginate_by = 15
+
+    success_url = reverse_lazy('class-list')
 
     def get_queryset(self):
         return Class.objects.filter(Q(author__isnull=True) | Q(author=self.request.user)).order_by('name')
 
 
-class ClassCreateView(CreateView):
+class ClassCreateView(LoginRequiredMixin, CreateView):
     model = Class
     form_class = ClassModelForm
     template_name = 'form.html'
 
+    login_url = 'login'
     success_url = reverse_lazy('class-list')
 
     def form_valid(self, form):
@@ -119,33 +151,40 @@ class ClassCreateView(CreateView):
         return redirect(self.success_url)
 
 
-class ClassUpdateView(UpdateView):
+class ClassUpdateView(LoginRequiredMixin, UpdateView):
     model = Class
     form_class = ClassModelForm
     template_name = 'form.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('class-list')
 
 
-class ClassDeleteView(DeleteView):
+class ClassDeleteView(LoginRequiredMixin, DeleteView):
     model = Class
     template_name = 'form_confirm_delete.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('class-list')
 
 
-class CareerListView(ListView):
+class CareerListView(LoginRequiredMixin, ListView):
     model = Career
     template_name = 'dashboard.html'
     paginate_by = 15
+
+    login_url = 'login'
 
     def get_queryset(self):
         return Career.objects.filter(Q(author__isnull=True) | Q(author=self.request.user)).order_by('name')
 
 
-class CareerCreateView(CreateView):
+class CareerCreateView(LoginRequiredMixin, CreateView):
     model = Career
     form_class = CareerModelForm
     template_name = 'form.html'
 
+    login_url = 'login'
     success_url = reverse_lazy('career-list')
 
     def form_valid(self, form):
@@ -155,20 +194,24 @@ class CareerCreateView(CreateView):
         return redirect(self.success_url)
 
 
-class CareerUpdateView(UpdateView):
+class CareerUpdateView(LoginRequiredMixin, UpdateView):
     model = Career
     form_class = CareerModelForm
     template_name = 'form.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('career-list')
 
 
-class CareerDeleteView(DeleteView):
+class CareerDeleteView(LoginRequiredMixin, DeleteView):
     model = Career
     template_name = 'form_confirm_delete.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('career-list')
 
 
-class SkillListView(ListView):
+class SkillListView(LoginRequiredMixin, ListView):
     model = Skill
     template_name = 'dashboard.html'
 
@@ -176,11 +219,12 @@ class SkillListView(ListView):
         return Skill.objects.filter(Q(author__isnull=True) | Q(author=self.request.user)).order_by('name')
 
 
-class SkillCreateView(CreateView):
+class SkillCreateView(LoginRequiredMixin, CreateView):
     model = Skill
     form_class = SkillModelForm
     template_name = 'form.html'
 
+    login_url = 'login'
     success_url = reverse_lazy('skill-list')
 
     def form_valid(self, form):
@@ -190,32 +234,39 @@ class SkillCreateView(CreateView):
         return redirect(self.success_url)
 
 
-class SkillUpdateView(UpdateView):
+class SkillUpdateView(LoginRequiredMixin, UpdateView):
     model = Skill
     form_class = SkillModelForm
     template_name = 'form.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('skill-list')
 
 
-class SkillDeleteView(DeleteView):
+class SkillDeleteView(LoginRequiredMixin, DeleteView):
     model = Skill
     template_name = 'form_confirm_delete.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('skill-list')
 
 
-class TalentListView(ListView):
+class TalentListView(LoginRequiredMixin, ListView):
     model = Talent
     template_name = 'dashboard.html'
+
+    login_url = 'login'
 
     def get_queryset(self):
         return Talent.objects.filter(Q(author__isnull=True) | Q(author=self.request.user)).order_by('name')
 
 
-class TalentCreateView(CreateView):
+class TalentCreateView(LoginRequiredMixin, CreateView):
     model = Talent
     form_class = TalentModelForm
     template_name = 'form.html'
 
+    login_url = 'login'
     success_url = reverse_lazy('talent-list')
 
     def form_valid(self, form):
@@ -225,14 +276,18 @@ class TalentCreateView(CreateView):
         return redirect(self.success_url)
 
 
-class TalentUpdateView(UpdateView):
+class TalentUpdateView(LoginRequiredMixin, UpdateView):
     model = Talent
     form_class = TalentModelForm
     template_name = 'form.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('talent-list')
 
 
-class TalentDeleteView(DeleteView):
+class TalentDeleteView(LoginRequiredMixin, DeleteView):
     model = Talent
     template_name = 'form_confirm_delete.html'
+
+    login_url = 'login'
     success_url = reverse_lazy('talent-list')
