@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mt-50">
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col-12" colspan="5">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="d-flex">
+                    <td class="{% if class.author.id == user.id %} col-10 {% else %} col-11 {% endif %}">{{ class.name }}</td>
+                    <td class="col-05 text-right">
+                        <a title="create" href="{{ class.get_create_url }}"><span class="fa fa-square-plus"></span></a>
+                    </td>
+                    {% if class.author.id == user.id %}
+                        <td class="col-05 text-right">
+                            <a title="edit" href="{{ class.get_update_url }}"><span class="fa fa-pen-to-square"></span></a>
+                        </td>
+                        <td class="col-05 text-right">
+                            <a title="delete" href="{{ class.get_delete_url }}"><span class="fa fa-trash"></span></a>
+                        </td>
+                    {% endif %}
+                    <td class="col-05 text-right">
+                        <a title="back to list" href="{% url 'class-list' %}"><span class="fa fa-right-from-bracket"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col-12">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="d-flex">
+                <td class="col-12 text-justify">{{ class.description }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

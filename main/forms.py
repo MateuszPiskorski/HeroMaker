@@ -29,6 +29,9 @@ class CareerModelForm(forms.ModelForm):
     class Meta:
         model = Career
         exclude = ["author"]
+        labels = {
+            'class_for_career': 'Class',
+        }
 
 
 class SkillModelForm(forms.ModelForm):

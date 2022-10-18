@@ -23,6 +23,7 @@ urlpatterns = [
     path('game/edit/<int:pk>', views.GameUpdateView.as_view(), name='game-update'),
     path('game/create/<int:pk>', views.GameCreateView.as_view(), name='game-create'),
     path('game/delete/<int:pk>', views.GameDeleteView.as_view(), name='game-delete'),
+    path('game/details/<int:pk>', views.GameDetailView.as_view(), name='game-details'),
 
     path('user/<int:pk>/dashboard', views.DashboardView.as_view(), name='dashboard'),
 
@@ -35,20 +36,25 @@ urlpatterns = [
     path('species/edit/<int:pk>', views.SpeciesUpdateView.as_view(), name='species-update'),
     path('species/create/<int:pk>', views.SpeciesCreateView.as_view(), name='species-create'),
     path('species/delete/<int:pk>', views.SpeciesDeleteView.as_view(), name='species-delete'),
+    path('species/details/<int:pk>', views.SpeciesDetailView.as_view(), name='species-details'),
 
-    path('class/edit/<int:pk>', views.ClassCreateView.as_view(), name='class-update'),
-    path('class/create/<int:pk>', views.ClassUpdateView.as_view(), name='class-create'),
+    path('class/edit/<int:pk>', views.ClassUpdateView.as_view(), name='class-update'),
+    path('class/create/<int:pk>', views.ClassCreateView.as_view(), name='class-create'),
     path('class/delete/<int:pk>', views.ClassDeleteView.as_view(), name='class-delete'),
+    path('class/details/<int:pk>', views.ClassDetailView.as_view(), name='class-details'),
 
-    path('career/edit/<int:pk>', views.CareerCreateView.as_view(), name='career-update'),
-    path('career/create/<int:pk>', views.CareerUpdateView.as_view(), name='career-create'),
+    path('career/edit/<int:pk>', views.CareerUpdateView.as_view(), name='career-update'),
+    path('career/create/<int:pk>', views.CareerCreateView.as_view(), name='career-create'),
     path('career/delete/<int:pk>', views.CareerDeleteView.as_view(), name='career-delete'),
+    path('career/details/<int:pk>', views.CareerDetailView.as_view(), name='career-details'),
 
-    path('skill/edit/<int:pk>', views.SkillCreateView.as_view(), name='skill-update'),
-    path('skill/create/<int:pk>', views.SkillUpdateView.as_view(), name='skill-create'),
+    path('skill/edit/<int:pk>', views.SkillUpdateView.as_view(), name='skill-update'),
+    path('skill/create/<int:pk>', views.SkillCreateView.as_view(), name='skill-create'),
     path('skill/delete/<int:pk>', views.SkillDeleteView.as_view(), name='skill-delete'),
+    path('skill/details/<int:pk>', views.SkillDetailView.as_view(), name='skill-details'),
 
-    path('talent/edit/<int:pk>', views.TalentCreateView.as_view(), name='talent-update'),
-    path('talent/create/<int:pk>', views.TalentUpdateView.as_view(), name='talent-create'),
+    path('talent/edit/<int:pk>', views.TalentUpdateView.as_view(), name='talent-update'),
+    path('talent/create/<int:pk>', views.TalentCreateView.as_view(), name='talent-create'),
     path('talent/delete/<int:pk>', views.TalentDeleteView.as_view(), name='talent-delete'),
+    path('talent/details/<int:pk>', views.TalentDetailView.as_view(), name='talent-details'),
 ]

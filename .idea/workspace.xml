@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6b57c82-083c-42ab-b65b-452c99d28852" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/main/templates/career-detail-view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/class-detail-view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/game-detail-view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/skill-detail-view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/species-detail-view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/templates/talent-detail-view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HeroMaker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/HeroMaker/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/dashboard-list-view.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/dashboard-list-view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/list-view.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/list-view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -43,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/mateusz/workspace/scrumlab/WAR_SPY_W_316_ScrumLab",
+    "last_opened_file_path": "/home/mateusz/workspace/modul5/FilmWar26",
     "list.type.of.created.stylesheet": "CSS",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
   }
@@ -57,24 +67,7 @@
       <recent name="$PROJECT_DIR$/main/templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for tests.test_talent_update_post_login">
-    <configuration name="pytest for tests.test_skill_create_post_login" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="HeroMaker" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_skill_create_post_login&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.pytest in tests.py">
     <configuration name="pytest for tests.test_talent_create_get_login" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="HeroMaker" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,13 +136,30 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest in tests.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="HeroMaker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/main/tests.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest in tests.py" />
         <item itemvalue="Python tests.pytest for tests.test_talent_update_post_login" />
         <item itemvalue="Python tests.pytest for tests.test_talent_update_get_login" />
         <item itemvalue="Python tests.pytest for tests.test_talent_create_post_login" />
         <item itemvalue="Python tests.pytest for tests.test_talent_create_get_login" />
-        <item itemvalue="Python tests.pytest for tests.test_skill_create_post_login" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +173,9 @@
       <updated>1665130687643</updated>
       <workItem from="1665130692182" duration="17169000" />
       <workItem from="1665390487758" duration="11626000" />
-      <workItem from="1665404536483" duration="97510000" />
+      <workItem from="1665404536483" duration="97638000" />
+      <workItem from="1665999870975" duration="1746000" />
+      <workItem from="1666080552389" duration="18515000" />
     </task>
     <servers />
   </component>
@@ -215,7 +227,7 @@
     <SUITE FILE_PATH="coverage/HeroMaker$pytest_for_tests_test_talent_update_post_login.coverage" NAME="pytest for tests.test_talent_update_post_login Coverage Results" MODIFIED="1665929803490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
     <SUITE FILE_PATH="coverage/HeroMaker$pytest_for_tests_test_game_update_post_login_superuser.coverage" NAME="pytest for tests.test_game_update_post_login_superuser Coverage Results" MODIFIED="1665921563276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
     <SUITE FILE_PATH="coverage/HeroMaker$pytest_for_tests_test_class_update_get_login.coverage" NAME="pytest for tests.test_class_update_get_login Coverage Results" MODIFIED="1665926716224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
-    <SUITE FILE_PATH="coverage/HeroMaker$pytest_in_tests_py.coverage" NAME="pytest in tests.py Coverage Results" MODIFIED="1665919655948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
+    <SUITE FILE_PATH="coverage/HeroMaker$pytest_in_tests_py.coverage" NAME="pytest in tests.py Coverage Results" MODIFIED="1666107054310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
     <SUITE FILE_PATH="coverage/HeroMaker$pytest_for_tests_test_talent_update_get_login.coverage" NAME="pytest for tests.test_talent_update_get_login Coverage Results" MODIFIED="1665929800110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
     <SUITE FILE_PATH="coverage/HeroMaker$pytest_for_tests_test_species_create_post_login.coverage" NAME="pytest for tests.test_species_create_post_login Coverage Results" MODIFIED="1665925388774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
     <SUITE FILE_PATH="coverage/HeroMaker$pytest_for_tests_test_classes_create_post_login.coverage" NAME="pytest for tests.test_classes_create_post_login Coverage Results" MODIFIED="1665926360215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />

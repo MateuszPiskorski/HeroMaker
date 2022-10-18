@@ -23,6 +23,9 @@ class Game(models.Model):
     def get_delete_url(self):
         return reverse('game-delete', args=(self.id,))
 
+    def get_absolute_url(self):
+        return reverse('game-details', args=(self.id,))
+
 
 class Characteristics(models.Model):
     fellowship = models.PositiveSmallIntegerField()
@@ -56,6 +59,9 @@ class Class(models.Model):
     def get_delete_url(self):
         return reverse('class-delete', args=(self.id,))
 
+    def get_absolute_url(self):
+        return reverse('class-details', args=(self.id,))
+
 
 class Talent(models.Model):
     name = models.CharField(max_length=255)
@@ -78,6 +84,9 @@ class Talent(models.Model):
 
     def get_delete_url(self):
         return reverse('talent-delete', args=(self.id,))
+
+    def get_absolute_url(self):
+        return reverse('talent-details', args=(self.id,))
 
 
 class Skill(models.Model):
@@ -103,6 +112,9 @@ class Skill(models.Model):
     def get_delete_url(self):
         return reverse('skill-delete', args=(self.id,))
 
+    def get_absolute_url(self):
+        return reverse('skill-details', args=(self.id,))
+
 
 class Career(models.Model):
     name = models.CharField(max_length=255)
@@ -110,7 +122,7 @@ class Career(models.Model):
     description = models.TextField()
     first_level_name = models.CharField(max_length=255)
 
-    _class = models.ForeignKey(Class, on_delete=models.CASCADE)
+    class_for_career = models.ForeignKey(Class, on_delete=models.CASCADE)
     talents = models.ManyToManyField(Talent)
     skills = models.ManyToManyField(Skill)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -126,6 +138,9 @@ class Career(models.Model):
 
     def get_delete_url(self):
         return reverse('career-delete', args=(self.id,))
+
+    def get_absolute_url(self):
+        return reverse('career-details', args=(self.id,))
 
 
 class Species(models.Model):
@@ -149,6 +164,9 @@ class Species(models.Model):
 
     def get_delete_url(self):
         return reverse('species-delete', args=(self.id,))
+
+    def get_absolute_url(self):
+        return reverse('species-details', args=(self.id,))
 
 # class Hero(models.Model):
 #     name = models.CharField(max_length=255)

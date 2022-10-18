@@ -13,7 +13,7 @@
             {% for item in object_list %}
                 <tr class="d-flex">
                     <th scope="row" class="col-1">{{ page_obj.start_index|add:forloop.counter0 }}</th>
-                    <td class="col-3">{{ item.name }}</td>
+                    <td class="col-3"><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></td>
                     <td class="col-6">
                         {% if item.description|length > 64 %}
                             {{ item.short_description }}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mt-50">
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col-12" colspan="5">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="d-flex">
+                    <td class="{% if skill.author.id == user.id %} col-10 {% else %} col-11 {% endif %}">{{ skill.name }}</td>
+                    <td class="col-05 text-right">
+                        <a title="create" href="{{ skill.get_create_url }}"><span class="fa fa-square-plus"></span></a>
+                    </td>
+                    {% if skill.author.id == user.id %}
+                        <td class="col-05 text-right">
+                            <a title="edit" href="{{ skill.get_update_url }}"><span class="fa fa-pen-to-square"></span></a>
+                        </td>
+                        <td class="col-05 text-right">
+                            <a title="delete" href="{{ skill.get_delete_url }}"><span class="fa fa-trash"></span></a>
+                        </td>
+                    {% endif %}
+                    <td class="col-05 text-right">
+                        <a title="back to list" href="{% url 'skill-list' %}"><span class="fa fa-right-from-bracket"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col-12">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="d-flex">
+                <td class="col-12 text-justify">{{ skill.description }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col-12">Tests (characteristics)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="d-flex">
+                <td class="col-12 text-justify">{{ skill.characteristic }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col-12">Is advanced</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="d-flex">
+                <td class="col-12 text-justify">{% if skill.is_advanced == True %} Yes {% else %} No {% endif %}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th scope="col" class="col-12">Is grouped</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="d-flex">
+                <td class="col-12 text-justify">{% if skill.is_grouped == True %} Yes {% else %} No {% endif %}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
