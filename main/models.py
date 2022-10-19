@@ -5,8 +5,8 @@ from django.urls import reverse
 
 class Game(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField(max_length=1024)
-    short_description = models.CharField(max_length=64)
+    description = models.TextField()
+    short_description = models.CharField(max_length=128)
     rule_set = models.CharField(max_length=255, default="classic")
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -42,7 +42,7 @@ class Characteristics(models.Model):
 
 class Class(models.Model):
     name = models.CharField(max_length=255)
-    short_description = models.CharField(max_length=64)
+    short_description = models.CharField(max_length=128)
     description = models.TextField()
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -67,7 +67,7 @@ class Talent(models.Model):
     name = models.CharField(max_length=255)
     tests = models.CharField(max_length=255)
     bonus_when_maxed = models.CharField(max_length=255)
-    short_description = models.CharField(max_length=64)
+    short_description = models.CharField(max_length=128)
     description = models.TextField()
     level = models.PositiveSmallIntegerField()
 
@@ -92,7 +92,7 @@ class Talent(models.Model):
 class Skill(models.Model):
     name = models.CharField(max_length=255)
     characteristic = models.CharField(max_length=255)
-    short_description = models.CharField(max_length=64)
+    short_description = models.CharField(max_length=128)
     description = models.TextField()
 
     is_advanced = models.BooleanField(default=False)
@@ -118,7 +118,7 @@ class Skill(models.Model):
 
 class Career(models.Model):
     name = models.CharField(max_length=255)
-    short_description = models.CharField(max_length=64)
+    short_description = models.CharField(max_length=128)
     description = models.TextField()
     first_level_name = models.CharField(max_length=255)
 
@@ -145,7 +145,7 @@ class Career(models.Model):
 
 class Species(models.Model):
     name = models.CharField(max_length=255)
-    short_description = models.CharField(max_length=64)
+    short_description = models.CharField(max_length=128)
     description = models.TextField()
 
     disallowed_careers = models.ManyToManyField(Career)

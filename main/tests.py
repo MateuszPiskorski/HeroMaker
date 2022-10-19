@@ -1,7 +1,7 @@
 import pytest
 from django.urls import reverse
 
-from main.forms import GameModelForm, SpeciesModelForm, ClassModelForm, SkillModelForm, TalentModelForm
+from main.forms import GameModelForm, SpeciesModelForm, ClassModelForm, SkillModelForm, TalentModelForm, CareerModelForm
 from main.models import Game, Species, Class, Career, Skill, Talent
 
 
@@ -35,8 +35,6 @@ def test_species_list_view_login(client, species):
     response = client.get(url)
     assert response.status_code == 200
     assert response.context['object_list'].count() == len(client_species)
-    # for specie in species:
-    #     assert specie in response.context['object_list']
 
 
 def test_species_list_view_not_login(client):
@@ -56,8 +54,6 @@ def test_class_list_view_login(client, classes):
     response = client.get(url)
     assert response.status_code == 200
     assert response.context['object_list'].count() == len(client_classes)
-    # for class_ in classes:
-    #     assert class_ in response.context['object_list']
 
 
 def test_class_list_view_not_login(client):
@@ -77,8 +73,6 @@ def test_career_list_view_login(client, careers):
     response = client.get(url)
     assert response.status_code == 200
     assert response.context['object_list'].count() == len(client_careers)
-    # for career in careers:
-    #     assert career in response.context['object_list']
 
 
 def test_career_list_view_not_login(client):
@@ -98,8 +92,6 @@ def test_skill_list_view_login(client, skills):
     response = client.get(url)
     assert response.status_code == 200
     assert response.context['object_list'].count() == len(client_skills)
-    # for skill in skills:
-    #     assert skill in response.context['object_list']
 
 
 def test_skill_list_view_not_login(client):
@@ -119,8 +111,6 @@ def test_talent_list_view_login(client, talents):
     response = client.get(url)
     assert response.status_code == 200
     assert response.context['object_list'].count() == len(client_talent)
-    # for talent in talents:
-    #     assert talent in response.context['object_list']
 
 
 def test_talent_list_view_not_login(client):
@@ -160,7 +150,6 @@ def test_game_create_post_login(client, user, games):
         'description': 'newdesc',
         'rule_set': 'whatever',
         'short_description': 'newshortdesc',
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -209,7 +198,6 @@ def test_game_update_post_login_superuser(client, superuser, games):
         'description': 'whatever',
         'rule_set': 'whatever',
         'short_description': 'whatever',
-        'author': superuser.id,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -237,15 +225,6 @@ def test_game_delete_get_not_login(client, user, games):
     assert response.url.startswith(url_redirect)
 
 
-# @pytest.mark.django_db
-# def test_game_delete_post_login_superuser(client, superuser, games):
-#     game = games[0]
-#     url = reverse('game-delete', args=(game.id,))
-#     client.force_login(superuser)
-#     response = client.post(url)
-#     assert response.status_code == 302
-
-
 @pytest.mark.django_db
 def test_species_create_get_login(client, user, species):
     speciee = species[0]
@@ -265,9 +244,8 @@ def test_species_create_post_login(client, user, species):
         'description': 'newdesc',
         'short_description': 'newshortdesc',
         'disallowed_careers': [1, 2],
-        'skills': [1, 2, 3],
-        'talents': [3, 4],
-        'author': user,
+        'skills': [1, 2],
+        'talents': [1, 2],
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -299,13 +277,12 @@ def test_species_update_post_login(client, user, species):
         'disallowed_careers': [1, 2],
         'skills': [1, 2, 3],
         'talents': [3, 4],
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
     url_redirect = reverse('species-list')
     assert response.url.startswith(url_redirect)
-    Species.objects.get(name=data['newname'])
+    Species.objects.get(name=data['name'])
 
 
 @pytest.mark.django_db
@@ -326,7 +303,6 @@ def test_class_create_post_login(client, user, classes):
         'name': 'whatever',
         'description': 'whatever',
         'short_description': 'whatever',
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -355,7 +331,6 @@ def test_class_update_post_login(client, user, classes):
         'name': 'newname',
         'description': 'newdesc',
         'short_description': 'newshortdesc',
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -374,9 +349,8 @@ def test_career_create_get_login(client, user, careers):
 
 
 @pytest.mark.django_db
-def test_career_create_post_login(client, user, careers, classes, talents, skills):
+def test_career_create_post_login(client, user, careers):
     career = careers[0]
-    _class = classes[0]
     url = reverse('career-create', args=(career.id,))
     client.force_login(user)
     data = {
@@ -384,10 +358,9 @@ def test_career_create_post_login(client, user, careers, classes, talents, skill
         'description': 'whatever',
         'short_description': 'whatever',
         'first_level_name': 'whatever',
-        '_class': _class,
+        'class_for_career': 1,
         'talents': [1, 2],
         'skills': [1, 2],
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -404,13 +377,12 @@ def test_career_update_get_login(client, user, careers):
     response = client.get(url)
     form_obj = response.context['form']
     assert response.status_code == 200
-    assert isinstance(form_obj, ClassModelForm)
+    assert isinstance(form_obj, CareerModelForm)
 
 
 @pytest.mark.django_db
-def test_career_update_post_login(client, user, careers, classes, talents, skills):
+def test_career_update_post_login(client, user, careers):
     career = careers[0]
-    _class = classes[0]
     url = reverse('career-update', args=(career.id,))
     client.force_login(user)
     data = {
@@ -418,10 +390,9 @@ def test_career_update_post_login(client, user, careers, classes, talents, skill
         'description': 'new',
         'short_description': 'new',
         'first_level_name': 'new',
-        '_class': _class,
+        'class_for_career': 1,
         'talents': [1, 2],
         'skills': [1, 2],
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -451,7 +422,6 @@ def test_skill_create_post_login(client, user, skills):
         'characteristic': 'whatever',
         'is_advanced': False,
         'is_grouped': False,
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -483,7 +453,6 @@ def test_skill_update_post_login(client, user, skills):
         'characteristic': 'new',
         'is_advanced': True,
         'is_grouped': True,
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -513,7 +482,6 @@ def test_talent_create_post_login(client, user, talents):
         'bonus_when_maxed': 'whatever',
         'short_description': "whatever",
         'level': 1,
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302
@@ -545,7 +513,6 @@ def test_talent_update_post_login(client, user, talents):
         'bonus_when_maxed': 'new',
         'short_description': 'new',
         'level': 1,
-        'author': user,
     }
     response = client.post(url, data)
     assert response.status_code == 302

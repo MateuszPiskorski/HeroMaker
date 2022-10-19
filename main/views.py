@@ -117,17 +117,17 @@ class SpeciesCreateView(LoginRequiredMixin, CreateView):
         self.object.save()
         return redirect(self.success_url)
 
-    # def get_initial(self):
-    #     species = get_object_or_404(Species, id=self.kwargs['pk'])
-    #     initial_data = {
-    #         'name': species.name,
-    #         'description': species.description,
-    #         'short_description': species.short_description,
-    #         'disallowed_careers': species.disallowed_careers,
-    #         'skills': species.skills,
-    #         'talents': species.talents,
-    #     }
-    #     return initial_data
+    def get_initial(self):
+        species = get_object_or_404(Species, id=self.kwargs['pk'])
+        initial_data = {
+            'name': species.name,
+            'description': species.description,
+            'short_description': species.short_description,
+            'disallowed_careers': [career.id for career in species.disallowed_careers.all()],
+            'skills': [skill.id for skill in species.skills.all()],
+            'talents': [talent.id for talent in species.talents.all()],
+        }
+        return initial_data
 
 
 class SpeciesUpdateView(LoginRequiredMixin, UpdateView):
@@ -239,6 +239,18 @@ class CareerCreateView(LoginRequiredMixin, CreateView):
         self.object.author = self.request.user
         self.object.save()
         return redirect(self.success_url)
+
+    def get_initial(self):
+        career = get_object_or_404(Career, id=self.kwargs['pk'])
+        initial_data = {
+            'name': career.name,
+            'description': career.description,
+            'short_description': career.short_description,
+            'class_for_career': career.class_for_career.id,
+            'skills': [skill.id for skill in career.skills.all()],
+            'talents': [talent.id for talent in career.talents.all()],
+        }
+        return initial_data
 
 
 class CareerUpdateView(LoginRequiredMixin, UpdateView):

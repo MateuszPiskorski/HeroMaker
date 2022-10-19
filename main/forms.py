@@ -29,6 +29,10 @@ class CareerModelForm(forms.ModelForm):
     class Meta:
         model = Career
         exclude = ["author"]
+        widgets = {
+            'skills': forms.CheckboxSelectMultiple,
+            'talents': forms.CheckboxSelectMultiple,
+        }
         labels = {
             'class_for_career': 'Class',
         }

@@ -92,17 +92,18 @@ def talents(authors):
 def careers(authors, classes, talents, skills):
     lst = []
     for author, class_, talent, skill in zip(authors, classes, talents, skills):
-        lst.append(
-            Career.objects.create(
+        obj = Career.objects.create(
                 name="species",
                 description="some desc",
                 short_description="short desc",
                 first_level_name="level",
-                talents=talent,
-                skills=skill,
                 class_for_career=class_,
                 author=author,
             )
+        obj.talents.add(talent)
+        obj.skills.add(skill)
+        lst.append(
+            obj
         )
     return lst
 
@@ -117,7 +118,6 @@ def species(authors, careers, talents, skills):
                 short_description="short desc",
                 author=author
             )
-        obj.save()
         obj.disallowed_careers.add(career)
         obj.talents.add(talent)
         obj.skills.add(skill)
