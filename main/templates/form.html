@@ -7,7 +7,7 @@
     <div class="mt-100 col-auto">
         <form action="" method="post">
             {% csrf_token %}
-            {{ form|crispy }}
+            {% crispy form %}
             <input type="submit">
         </form>
     </div>

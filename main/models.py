@@ -65,7 +65,7 @@ class Class(models.Model):
 
 class Talent(models.Model):
     name = models.CharField(max_length=255)
-    tests = models.CharField(max_length=255)
+    tests = models.CharField(max_length=255, blank=True)
     bonus_when_maxed = models.CharField(max_length=255)
     short_description = models.CharField(max_length=128)
     description = models.TextField()

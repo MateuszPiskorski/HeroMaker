@@ -24,7 +24,7 @@
                     <td class="col-1 text-right">
                         <a title="create" href="{{ item.get_create_url }}"><span class="fa fa-square-plus"></span></a>
                     </td>
-                    {% if item.author.id == user.id %}
+                    {% if item.author.id == user.id or user.is_superuser %}
                         <td class="col-05">
                             <a title="edit" href="{{ item.get_update_url }}"><span class="fa fa-pen-to-square"></span></a>
                         </td>
