@@ -106,7 +106,7 @@ class SpeciesListView(LoginRequiredMixin, ListView):
 class SpeciesCreateView(LoginRequiredMixin, CreateView):
     model = Species
     form_class = SpeciesModelForm
-    template_name = 'form.html'
+    template_name = 'form-with-inline-checkboxes.html'
 
     login_url = 'login'
     success_url = reverse_lazy('species-list')
@@ -133,7 +133,7 @@ class SpeciesCreateView(LoginRequiredMixin, CreateView):
 class SpeciesUpdateView(LoginRequiredMixin, UpdateView):
     model = Species
     form_class = SpeciesModelForm
-    template_name = 'form.html'
+    template_name = 'form-with-inline-checkboxes.html'
 
     login_url = 'login'
     success_url = reverse_lazy('species-list')
@@ -229,7 +229,7 @@ class CareerListView(LoginRequiredMixin, ListView):
 class CareerCreateView(LoginRequiredMixin, CreateView):
     model = Career
     form_class = CareerModelForm
-    template_name = 'form.html'
+    template_name = 'form-with-inline-checkboxes.html'
 
     login_url = 'login'
     success_url = reverse_lazy('career-list')
@@ -256,7 +256,7 @@ class CareerCreateView(LoginRequiredMixin, CreateView):
 class CareerUpdateView(LoginRequiredMixin, UpdateView):
     model = Career
     form_class = CareerModelForm
-    template_name = 'form.html'
+    template_name = 'form-with-inline-checkboxes.html'
 
     login_url = 'login'
     success_url = reverse_lazy('career-list')

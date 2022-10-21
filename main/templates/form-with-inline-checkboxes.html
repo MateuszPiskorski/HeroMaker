@@ -4,11 +4,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="mt-100 col-auto">
+    <div class="mt-100 col-auto text-justify">
         <form action="" method="post">
             {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit">
+            {% crispy form %}
         </form>
     </div>
 {% endblock %}

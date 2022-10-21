@@ -210,3 +210,9 @@ html, body {
     background-color: white;
     height: 2px;
 }
+
+.checkbox-div {
+    -webkit-column-count: 10 !important;
+    -moz-column-count: 10 !important;
+    column-count: 10 !important;
+}

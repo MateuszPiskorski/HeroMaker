@@ -1,4 +1,5 @@
 import pytest
+from django.contrib.auth.models import User
 from django.urls import reverse
 
 from main.forms import GameModelForm, SpeciesModelForm, ClassModelForm, SkillModelForm, TalentModelForm, CareerModelForm
@@ -14,6 +15,64 @@ def test_index_view(client):
     url = reverse('index')
     response = client.get(url)
     assert response.status_code == 200
+
+
+def test_register_view_get(client):
+    url = reverse('register')
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_register_view_post(client, user):
+    url = reverse('register')
+    data = {
+        'username': 'username',
+        'password1': 'password',
+        'password2': 'password',
+    }
+    response = client.post(url, data)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)
+    User.objects.get(**data)
+
+
+def test_login_view_get(client):
+    url = reverse('login')
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_login_view_post(client, user):
+    url = reverse('login')
+    data = {
+        'username': 'username',
+        'password': 'password',
+    }
+    response = client.post(url, data)
+    assert response.status_code == 302
+    url_redirect = reverse('dashboard', args=(user.id,))
+    assert response.url.startswith(url_redirect)
+    User.objects.get(**data)
+
+
+@pytest.mark.django_db
+def test_dashboard_view_get_login(client, user):
+    url = reverse('dashboard', args=(user.id,))
+    client.force_login(user)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_dashboard_view_get_not_login(client, user):
+    url = reverse('dashboard', args=(user.id,))
+    response = client.get(url)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)
 
 
 @pytest.mark.django_db
@@ -519,3 +578,237 @@ def test_talent_update_post_login(client, user, talents):
     url_redirect = reverse('talent-list')
     assert response.url.startswith(url_redirect)
     Talent.objects.get(name=data['name'])
+
+
+@pytest.mark.django_db
+def test_game_delete_view_get_login(client, superuser, games):
+    game = games[0]
+    url = reverse('game-delete', args=(game.id,))
+    client.force_login(superuser)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_game_delete_view_post_login(client, superuser, games):
+    game = games[0]
+    url = reverse('game-delete', args=(game.id,))
+    client.force_login(superuser)
+    response = client.post(url)
+    assert response.status_code == 302
+    url_redirect = reverse('games-list')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_species_delete_view_get_login(client, superuser, species):
+    speciee = species[0]
+    url = reverse('species-delete', args=(speciee.id,))
+    client.force_login(superuser)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_species_delete_view_post_login(client, superuser, species):
+    speciee = species[0]
+    url = reverse('species-delete', args=(speciee.id,))
+    client.force_login(superuser)
+    response = client.post(url)
+    assert response.status_code == 302
+    url_redirect = reverse('species-list')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_class_delete_view_get_login(client, superuser, classes):
+    class_ = classes[0]
+    url = reverse('class-delete', args=(class_.id,))
+    client.force_login(superuser)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_class_delete_view_post_login(client, superuser, classes):
+    class_ = classes[0]
+    url = reverse('class-delete', args=(class_.id,))
+    client.force_login(superuser)
+    response = client.post(url)
+    assert response.status_code == 302
+    url_redirect = reverse('class-list')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_career_delete_view_get_login(client, superuser, careers):
+    career = careers[0]
+    url = reverse('career-delete', args=(career.id,))
+    client.force_login(superuser)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_career_delete_view_post_login(client, superuser, careers):
+    career = careers[0]
+    url = reverse('career-delete', args=(career.id,))
+    client.force_login(superuser)
+    response = client.post(url)
+    assert response.status_code == 302
+    url_redirect = reverse('career-list')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_skill_delete_view_get_login(client, superuser, skills):
+    skill = skills[0]
+    url = reverse('skill-delete', args=(skill.id,))
+    client.force_login(superuser)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_skill_delete_view_post_login(client, superuser, skills):
+    skill = skills[0]
+    url = reverse('skill-delete', args=(skill.id,))
+    client.force_login(superuser)
+    response = client.post(url)
+    assert response.status_code == 302
+    url_redirect = reverse('skill-list')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_talent_delete_view_get_login(client, superuser, talents):
+    talent = talents[0]
+    url = reverse('talent-delete', args=(talent.id,))
+    client.force_login(superuser)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_talent_delete_view_post_login(client, superuser, talents):
+    talent = talents[0]
+    url = reverse('talent-delete', args=(talent.id,))
+    client.force_login(superuser)
+    response = client.post(url)
+    assert response.status_code == 302
+    url_redirect = reverse('talent-list')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_game_detail_view_login(client, user, games):
+    game = games[0]
+    url = reverse('game-details', args=(game.id,))
+    client.force_login(user)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_game_detail_view_not_login(client, games):
+    game = games[0]
+    url = reverse('game-details', args=(game.id,))
+    response = client.get(url)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_species_detail_view_login(client, user, species):
+    speciee = species[0]
+    url = reverse('species-details', args=(speciee.id,))
+    client.force_login(user)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_species_detail_view_not_login(client, species):
+    speciee = species[0]
+    url = reverse('species-details', args=(speciee.id,))
+    response = client.get(url)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_class_detail_view_login(client, user, classes):
+    class_ = classes[0]
+    url = reverse('class-details', args=(class_.id,))
+    client.force_login(user)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_class_detail_view_not_login(client, classes):
+    class_ = classes[0]
+    url = reverse('class-details', args=(class_.id,))
+    response = client.get(url)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_career_detail_view_login(client, user, careers):
+    career = careers[0]
+    url = reverse('career-details', args=(career.id,))
+    client.force_login(user)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_career_detail_view_not_login(client, careers):
+    career = careers[0]
+    url = reverse('career-details', args=(career.id,))
+    response = client.get(url)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_skills_detail_view_login(client, user, skills):
+    skill = skills[0]
+    url = reverse('skill-details', args=(skill.id,))
+    client.force_login(user)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_skills_detail_view_not_login(client, skills):
+    skill = skills[0]
+    url = reverse('skill-details', args=(skill.id,))
+    response = client.get(url)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)
+
+
+@pytest.mark.django_db
+def test_talent_detail_view_login(client, user, talents):
+    talent = talents[0]
+    url = reverse('talent-details', args=(talent.id,))
+    client.force_login(user)
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_talent_detail_view_not_login(client, talents):
+    talent = talents[0]
+    url = reverse('talent-details', args=(talent.id,))
+    response = client.get(url)
+    assert response.status_code == 302
+    url_redirect = reverse('login')
+    assert response.url.startswith(url_redirect)

@@ -1,6 +1,6 @@
 from crispy_forms.bootstrap import InlineCheckboxes
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout
+from crispy_forms.layout import Layout, Submit, Div
 from django import forms
 from .models import Game, Species, Class, Skill, Talent, Career
 
@@ -21,7 +21,7 @@ class SpeciesModelForm(forms.ModelForm):
             'talents': forms.CheckboxSelectMultiple,
         }
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.layout = Layout(
@@ -32,6 +32,7 @@ class SpeciesModelForm(forms.ModelForm):
             InlineCheckboxes('skills'),
             InlineCheckboxes('talents'),
         )
+        self.helper.add_input(Submit('submit', 'Submit'))
 
 
 class ClassModelForm(forms.ModelForm):
@@ -51,6 +52,20 @@ class CareerModelForm(forms.ModelForm):
         labels = {
             'class_for_career': 'Class',
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.layout = Layout(
+            'name',
+            'description',
+            'short_description',
+            'first_level_name',
+            'class_for_career',
+            InlineCheckboxes('skills'),
+            InlineCheckboxes('talents'),
+        )
+        self.helper.add_input(Submit('submit', 'Submit'))
 
 
 class SkillModelForm(forms.ModelForm):
